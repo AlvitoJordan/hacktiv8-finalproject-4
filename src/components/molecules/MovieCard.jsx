@@ -19,7 +19,7 @@ const MovieCard = (props) => {
           <CardDate release={release} />
           <CardRating rating={rating} />
         </div>
-        <div className="absolute flex gap-2 bottom-4 right-4">
+        <div className="absolute items-end flex flex-col gap-2 bottom-4 right-4">
           <BackgroundText text={age} />
           <BackgroundText text={type} />
         </div>
