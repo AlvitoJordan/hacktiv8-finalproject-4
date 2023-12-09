@@ -1,4 +1,4 @@
-# Final Project 2 [Web Based]: E-Commerce Front End (Bukapedia)
+# Final Project 4 [Web Based]: Movie Apps
 
 Repository ini merupakan Final Project IV dari Hacktiv8 MSIB 5.
 
