@@ -3,8 +3,8 @@ import { MovieCard } from "../molecules";
 
 const CardList = ({ movies }) => {
   return (
-    <div className="flex-1 max-w-full mx-auto items-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 grow place-items-center">
+    <div className="flex max-w-full mx-auto items-center justify-center">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
         {movies.map((movie, index) => (
           <MovieCard
             key={index}

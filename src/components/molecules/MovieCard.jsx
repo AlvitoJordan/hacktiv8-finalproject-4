@@ -11,7 +11,7 @@ const MovieCard = (props) => {
   const { title, poster, release, rating, age, type } = props;
 
   return (
-    <div className="relative max-w-xs rounded-xl overflow-hidden shadow-lg group w-[300px] h-[445px] cursor-pointer">
+    <div className="relative max-w-xs rounded-xl overflow-hidden shadow-lg group cursor-pointer">
       <CardImage source={poster} title={title} />
       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 to-transparent p-4">
         <div className="w-full">
