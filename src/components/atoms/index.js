@@ -6,6 +6,8 @@ import CardDate from "./Text/CardDate";
 import CardRating from "./Text/CardRating";
 import CardTitle from "./Text/CardTitle";
 import HeaderOne from "./Text/HeaderOne";
+import IconButton from "./Button/IconButton";
+import FooterText from "./Text/FooterText";
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   CardRating,
   CardTitle,
   HeaderOne,
+  IconButton,
+  FooterText,
 };
