@@ -11,6 +11,7 @@ const CardList = ({ movies }) => {
             title={movie.Title}
             poster={movie.Poster}
             release={movie.Year}
+            type={movie.Type}
           />
         ))}
       </div>
