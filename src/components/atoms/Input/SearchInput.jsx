@@ -4,7 +4,7 @@ const SearchInput = (props) => {
   const { value, onChange } = props;
   return (
     <input
-      className="bg-transparent text-gray-500 dark:text-gray-200 border-2 rounded-lg border-gray-300 dark:border-gray-500 p-2 focus:outline-none focus:border-red w-[300px]"
+      className="bg-transparent text-gray-500 dark:text-gray-200 p-2 focus:outline-none focus:border-red w-48 lg:w-64"
       type="search"
       placeholder="Search..."
       value={value}
