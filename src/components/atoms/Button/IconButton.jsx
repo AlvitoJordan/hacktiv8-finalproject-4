@@ -6,7 +6,7 @@ const IconButton = (props) => {
     case "light":
       return (
         <button
-          className="text-gray-400 hover:bg-gray-700 p-2 rounded-md"
+          className="text-gray-200 hover:bg-rose-950 p-2 rounded-md"
           onClick={onClick}
         >
           {children}
