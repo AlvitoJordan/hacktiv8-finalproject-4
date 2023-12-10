@@ -1,9 +1,9 @@
 import React from "react";
 import { DarkLogo, WebLogo } from "../../assets";
 import { Search } from "../molecules";
-import ChangeTheme from "../../hooks/changeTheme";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IconButton } from "../atoms";
+import { ChangeTheme } from "../../hooks";
 
 const NavBar = () => {
   const { theme, themeToggle } = ChangeTheme();

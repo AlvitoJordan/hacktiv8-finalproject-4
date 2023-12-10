@@ -24,7 +24,7 @@ const Homepage = () => {
     async function getAPI() {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?s=movie&apikey=aae043f2`
+          `http://www.omdbapi.com/?s=man&apikey=aae043f2`
         );
         const moviesData = await response.json();
         dispatch({ type: "SET_MOVIES", payload: moviesData.Search });
