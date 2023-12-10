@@ -1,113 +1,45 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import Layout from "../components/templates/Layout";
 import { HeaderOne } from "../components/atoms";
 import { CardList } from "../components/organisms";
 
+const movieReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_MOVIES":
+      return { ...state, movies: action.payload };
+    case "SET_ERROR":
+      return { ...state, error: action.payload };
+    default:
+      return state;
+  }
+};
 const Homepage = () => {
-  const movies = [
-    {
-      title: "Film 1",
-      poster:
-        "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
-      release: "10 Jul 2017",
-      rating: 8.5,
-      age: "PG-13",
-      type: "Action",
-    },
-    {
-      title: "Film 2",
-      poster:
-        "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 3",
-      poster:
-        "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 4",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 5",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 4",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 5",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 4",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 5",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 4",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 5",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 4",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-    {
-      title: "Film 5",
-      release: "2022-02-02",
-      rating: 7.8,
-      age: "PG",
-      type: "Comedy",
-    },
-  ];
+  const [state, dispatch] = useReducer(movieReducer, {
+    movies: [],
+    error: null,
+  });
+
+  const { movies, error } = state;
+  useEffect(() => {
+    async function getAPI() {
+      try {
+        const response = await fetch(
+          `http://www.omdbapi.com/?s=movie&apikey=aae043f2`
+        );
+        const moviesData = await response.json();
+        dispatch({ type: "SET_MOVIES", payload: moviesData.Search });
+      } catch (error) {
+        dispatch({ type: "SET_ERROR", payload: error.message });
+      }
+    }
+    getAPI();
+  }, []);
+
   return (
     <Layout>
       <HeaderOne text="Movie List" />
       <div className="pb-5"></div>
-      <CardList movies={movies} />
+      {error ? <div>Error: {error}</div> : <CardList movies={movies} />}
     </Layout>
   );
 };

@@ -8,12 +8,9 @@ const CardList = ({ movies }) => {
         {movies.map((movie, index) => (
           <MovieCard
             key={index}
-            title={movie.title}
-            poster={movie.poster}
-            release={movie.release}
-            rating={movie.rating}
-            age={movie.age}
-            type={movie.type}
+            title={movie.Title}
+            poster={movie.Poster}
+            release={movie.Year}
           />
         ))}
       </div>
