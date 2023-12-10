@@ -9,7 +9,7 @@ const NavBar = () => {
   const { theme, themeToggle } = ChangeTheme();
 
   return (
-    <div className=" bg-white dark:bg-transparent flex flex-row w-full justify-between items-center py-3 px-5 shadow-lg">
+    <div className=" bg-white dark:bg-transparent flex flex-row w-full justify-between items-center py-3 px-5 shadow-lg dark:shadow-none">
       <div className="flex flex-row gap-10">
         <div className="hidden lg:block">
           {theme === "dark" ? <DarkLogo /> : <WebLogo />}
