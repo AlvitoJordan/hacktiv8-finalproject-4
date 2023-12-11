@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, SearchInput } from "../atoms";
-import DropdownButton from "../atoms/Button/DropdownButton";
+import { Button, SearchInput, DropdownButton } from "../atoms";
 import { options } from "../../utils";
 
 const Search = (props) => {

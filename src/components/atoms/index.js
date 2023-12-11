@@ -7,8 +7,15 @@ import CardTitle from "./Text/CardTitle";
 import HeaderOne from "./Text/HeaderOne";
 import IconButton from "./Button/IconButton";
 import FooterText from "./Text/FooterText";
+import Gap from "./Gap/Gap";
+import SpanText from "./Text/SpanText";
+import RatingText from "./Text/RatingText";
+import Text from "./Text/Text";
+import ListText from "./Text/ListText";
+import DropdownButton from "./Button/DropdownButton";
 
 export {
+  DropdownButton,
   Button,
   CardImage,
   SearchInput,
@@ -18,4 +25,9 @@ export {
   HeaderOne,
   IconButton,
   FooterText,
+  Gap,
+  SpanText,
+  RatingText,
+  Text,
+  ListText,
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import Layout from "../components/templates/Layout";
-import { HeaderOne } from "../components/atoms";
-import { CardList } from "../components/organisms";
+import { MainHome } from "../components/organisms";
 
 const movieReducer = (state, action) => {
   switch (action.type) {
@@ -37,9 +36,7 @@ const Homepage = () => {
 
   return (
     <Layout>
-      <HeaderOne text="Movie List" />
-      <div className="pb-5"></div>
-      {error ? <div>Error: {error}</div> : <CardList movies={movies} />}
+      <MainHome error={error} movies={movies} />
     </Layout>
   );
 };
