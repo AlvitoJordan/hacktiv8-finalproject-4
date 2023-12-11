@@ -1,5 +1,5 @@
 import React from "react";
-import FooterText from "../atoms/Text/FooterText";
+import { FooterText } from "../atoms";
 
 const Footer = () => {
   return (

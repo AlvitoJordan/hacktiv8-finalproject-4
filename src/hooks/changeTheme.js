@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 
 const ChangeTheme = () => {
   const systemTheme = () => {
-    const windowMatch = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    return windowMatch;
+    const storageTheme = localStorage.getItem("theme");
+    const windowMatch = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    return storageTheme || windowMatch;
   };
 
-  const isDarkTheme = systemTheme();
-  const [theme, setTheme] = useState(isDarkTheme ? "dark" : "light");
+  const [theme, setTheme] = useState(systemTheme());
 
   useEffect(() => {
+    localStorage.setItem("theme", theme);
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
