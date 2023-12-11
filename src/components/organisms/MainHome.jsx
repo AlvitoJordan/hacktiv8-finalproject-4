@@ -6,7 +6,7 @@ const MainHome = ({ movies, error }) => {
   return (
     <>
       <HeaderOne text="Movie List" />
-      <Gap size={4} />
+      <Gap size="h-4" />
       {error ? <div>Error: {error}</div> : <CardList movies={movies} />}
     </>
   );

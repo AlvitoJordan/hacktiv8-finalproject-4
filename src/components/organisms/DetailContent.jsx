@@ -5,11 +5,11 @@ import { subNavMenu } from "../../utils";
 
 const DetailContent = ({ movie }) => {
   return (
-    <div className="flex gap-5 min-h-[550px]">
+    <div className="md:flex gap-5 min-h-[550px]">
       <div className="flex w-[400px] h-min">
         <CardImage source={movie?.Poster} alt={movie?.Title} />
       </div>
-      <div className="w-full px-5">
+      <div className="w-full px-5 py-5 lg:py-0">
         <DetailHeader
           title={movie?.Title}
           year={movie?.Year}
@@ -18,7 +18,7 @@ const DetailContent = ({ movie }) => {
           type={movie?.Type}
           rating={movie?.imdbRating}
         />
-        <Gap size={12} />
+        <Gap size="h-12" />
         <SubnavButton subNav={subNavMenu} movie={movie} />
       </div>
     </div>

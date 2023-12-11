@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../components/templates/Layout";
 import { DetailContent } from "../components/organisms";
+import { FetchByID } from "../services";
+import { LoadingState } from "../components/atoms";
 
 const Detailpage = () => {
   const { id } = useParams();
-  const [movieData, setMovieData] = useState(null);
-
-  useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const response = await fetch(
-          `http://www.omdbapi.com/?i=${id}&apikey=aae043f2&plot=full`
-        );
-        const data = await response.json();
-        setMovieData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchMovie();
-  }, [id]);
+  const { movieData, isLoading } = FetchByID(id);
 
   return (
     <Layout>
-      <DetailContent movie={movieData} />
+      {isLoading ? <LoadingState /> : <DetailContent movie={movieData} />}
     </Layout>
   );
 };
