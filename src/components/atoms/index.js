@@ -4,7 +4,7 @@ import SearchInput from "./Input/SearchInput";
 import BackgroundText from "./Text/BackgroundText";
 import CardDate from "./Text/CardDate";
 import CardTitle from "./Text/CardTitle";
-import HeaderOne from "./Text/HeaderOne";
+import DetailTitle from "./Text/DetailTitle";
 import IconButton from "./Button/IconButton";
 import FooterText from "./Text/FooterText";
 import Gap from "./Gap/Gap";
@@ -32,7 +32,7 @@ export {
   BackgroundText,
   CardDate,
   CardTitle,
-  HeaderOne,
+  DetailTitle,
   IconButton,
   FooterText,
   Gap,
