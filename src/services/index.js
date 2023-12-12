@@ -1,4 +1,5 @@
 import FetchSearch from "./fetchSearch";
 import FetchByID from "./fetchByID";
+import FetchAPI from "./fetchAPI";
 
-export { FetchSearch, FetchByID };
+export { FetchSearch, FetchByID, FetchAPI };
