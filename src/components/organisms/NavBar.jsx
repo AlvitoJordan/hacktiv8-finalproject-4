@@ -12,7 +12,15 @@ const NavBar = () => {
     <div className=" bg-white dark:bg-transparent flex flex-row w-full justify-between items-center py-3 px-5 shadow-lg dark:shadow-none">
       <div className="flex flex-row gap-10">
         <div className="hidden lg:block">
-          {theme === "dark" ? <DarkLogo /> : <WebLogo />}
+          {theme === "dark" ? (
+            <a href="/">
+              <DarkLogo />
+            </a>
+          ) : (
+            <a href="/">
+              <WebLogo />
+            </a>
+          )}
         </div>
         <Search />
       </div>
