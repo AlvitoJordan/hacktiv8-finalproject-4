@@ -1,8 +1,8 @@
 import React from "react";
-import { MovieCard } from "../molecules";
+import { MovieCard } from "../components/molecules";
 import { useNavigate } from "react-router-dom";
 
-const CardList = ({ movies }) => {
+const Movie = ({ movies }) => {
   const navigate = useNavigate();
   return (
     <div className="flex-1 max-w-full mx-auto items-center justify-center">
@@ -22,4 +22,4 @@ const CardList = ({ movies }) => {
   );
 };
 
-export default CardList;
+export default Movie;

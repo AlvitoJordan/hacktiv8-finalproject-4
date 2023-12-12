@@ -1,13 +1,14 @@
 import React from "react";
-import { Gap, HeaderOne } from "../atoms";
-import { CardList } from "../organisms";
+import { Gap } from "../atoms";
+import Header from "../../requirement/Header";
+import Movie from "../../requirement/Movie";
 
 const MainHome = ({ movies, error }) => {
   return (
     <>
-      <HeaderOne text="Movie List" />
+      <Header text="Movie List" />
       <Gap size="h-4" />
-      {error ? <div>Error: {error}</div> : <CardList movies={movies} />}
+      {error ? <div>Error: {error}</div> : <Movie movies={movies} />}
     </>
   );
 };

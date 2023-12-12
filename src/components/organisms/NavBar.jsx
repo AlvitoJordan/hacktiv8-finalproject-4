@@ -1,11 +1,10 @@
 import React from "react";
 import { DarkLogo, WebLogo } from "../../assets";
-import { Search } from "../molecules";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IconButton } from "../atoms";
 import { ChangeTheme } from "../../hooks";
 
-const NavBar = () => {
+const NavBar = ({ children }) => {
   const { theme, themeToggle } = ChangeTheme();
 
   return (
@@ -14,7 +13,7 @@ const NavBar = () => {
         <div className="hidden lg:block">
           {theme === "dark" ? <DarkLogo /> : <WebLogo />}
         </div>
-        <Search />
+        {children}
       </div>
       {theme === "dark" ? (
         <IconButton type="light" onClick={themeToggle}>
