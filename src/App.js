@@ -8,6 +8,7 @@ import { Gap } from "./components/atoms";
 import Movie from "./requirement/Movie";
 import Search from "./requirement/Search";
 import { FetchAPI } from "./services";
+import { SearchPage } from "./pages";
 function App() {
   const { movies, error } = FetchAPI();
   const handleSearch = (searchValue) => {
@@ -32,6 +33,7 @@ function App() {
         }
       />
       <Route path="/detail/:id" element={<Detailpage />} />
+      <Route path="/search/:search" element={<SearchPage />} />
     </Routes>
   );
 }

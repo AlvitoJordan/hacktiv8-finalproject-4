@@ -1,10 +1,12 @@
 import React from 'react'
+import Layout from '../components/templates/Layout'
+import { MainSearchPage } from '../components/organisms'
 
 const SearchPage = () => {
     return (
-        <div>
-
-        </div>
+        <Layout>
+            <MainSearchPage />
+        </Layout>
     )
 }
 

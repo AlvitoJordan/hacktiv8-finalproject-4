@@ -8,15 +8,27 @@ import {
 import { options } from "../utils";
 import { SearchingHooks } from "../hooks";
 import { FetchSearch } from "../services";
+import { useNavigate } from "react-router-dom";
+
 
 const Search = ({ onSearch }) => {
   const { searchValue, handleInputChange } = SearchingHooks("");
   const movieData = FetchSearch(searchValue);
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(searchValue);
+    console.log(movieData);
+    navigate(`/search/${movieData}`);
+
   };
+
+  
+  // const handleSearch = () => {
+  //   navigate(`/search/${searchProduct}`);
+  // };
 
   return (
     <>
