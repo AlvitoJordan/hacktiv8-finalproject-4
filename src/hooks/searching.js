@@ -16,7 +16,7 @@ const SearchingHooks = (state) => {
     navigate(`/detail/${id}`);
   };
 
-  return { searchValue, handleInputChange, handleClick };
+  return { searchValue, setSearchValue, handleInputChange, handleClick };
 };
 
 export default SearchingHooks;

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { options } from "../utils";
 
-const DropdownHooks = (initialOption) => {
+const DropdownHooks = () => {
   const [show, setShow] = useState(false);
-  const [selected, setSelected] = useState(initialOption);
+  const [selected, setSelected] = useState(options[0].name);
 
   const handleClick = (option) => {
     setSelected(option);
@@ -15,6 +16,7 @@ const DropdownHooks = (initialOption) => {
 
   return {
     show,
+    setSelected,
     selected,
     handleClick,
     dropdownToogle,
