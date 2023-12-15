@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Detailpage from "./pages/Detailpage";
 import { NavBar } from "./components/organisms";
@@ -7,12 +7,32 @@ import Header from "./requirement/Header";
 import { Gap } from "./components/atoms";
 import Movie from "./requirement/Movie";
 import Search from "./requirement/Search";
-import { FetchAPI } from "./services";
+import { FetchSearch } from "./services";
+import { DropdownHooks, SearchingHooks } from "./hooks";
+
 function App() {
-  const { movies, error } = FetchAPI();
-  const handleSearch = (searchValue) => {
-    console.log("Search Value:", searchValue);
+  const { searchValue, setSearchValue } = SearchingHooks("");
+
+  const { selected, setSelected } = DropdownHooks();
+
+  console.log("SearchValue After Change : ", searchValue);
+  console.log("Type After Change : ", selected);
+  let movies, error;
+
+  if (selected === "All" && searchValue === "") {
+    ({ movies, error } = FetchSearch());
+  } else {
+    ({ movies, error } = FetchSearch(
+      searchValue || undefined,
+      selected === "All" ? undefined : selected
+    ));
+  }
+
+  const handleSearch = (searchValue, type) => {
+    setSearchValue(searchValue);
+    setSelected(type);
   };
+
   return (
     <Routes>
       <Route

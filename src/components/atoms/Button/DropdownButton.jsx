@@ -2,10 +2,8 @@ import React from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { DropdownHooks } from "../../../hooks";
 
-const DropdownButton = ({ options }) => {
-  const { show, selected, handleClick, dropdownToogle } = DropdownHooks(
-    options[0].name
-  );
+const DropdownButton = ({ options, onClick, select }) => {
+  const { show, dropdownToogle } = DropdownHooks();
 
   return (
     <div>
@@ -13,7 +11,7 @@ const DropdownButton = ({ options }) => {
         className="flex items-center justify-between border-r-2 p-2 w-28 gap-2 cursor-pointer border-gray-300 dark:border-gray-500 bg-transparent text-gray-400 focus:outline-none"
         onClick={dropdownToogle}
       >
-        {selected}
+        {select}
         {show ? <FaAngleUp /> : <FaAngleDown />}
       </button>
 
@@ -23,7 +21,7 @@ const DropdownButton = ({ options }) => {
             {options.map((option) => (
               <button
                 key={option.id}
-                onClick={() => handleClick(option.name)}
+                onClick={() => onClick(option)}
                 className="block w-28 py-2 text-gray-500 dark:text-gray-200 focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-900"
               >
                 {option.name}
