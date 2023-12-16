@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Detailpage from "./pages/Detailpage";
 import { NavBar } from "./components/organisms";
 import { Footer } from "./components/molecules";
@@ -12,11 +12,20 @@ import { DropdownHooks, SearchingHooks } from "./hooks";
 
 function App() {
   const { searchValue, setSearchValue } = SearchingHooks("");
-
   const { selected, setSelected } = DropdownHooks();
 
-  console.log("SearchValue After Change : ", searchValue);
-  console.log("Type After Change : ", selected);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state) {
+      const { searchValue: stateSearchValue, selected: stateSelected } =
+        location.state;
+      setSearchValue(stateSearchValue);
+      setSelected(stateSelected);
+      window.history.replaceState(null, "");
+    }
+  }, [location.state, setSearchValue, setSelected]);
+
   let movies, error;
 
   if (selected === "All" && searchValue === "") {
