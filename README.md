@@ -10,6 +10,10 @@ Anggota :
 - Rezal Nur Syaifudin (RCTN-KS09-018)
 - Syaeful Annas (RCTN-KS09-019)
 
+## DEMO
+
+Using Vercel : https://hacktiv8-finalproject-4.vercel.app/
+
 ## Pages
 
 - HomePage : Menampilkan list film

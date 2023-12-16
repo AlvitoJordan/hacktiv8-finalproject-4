@@ -13,6 +13,7 @@ const movieReducer = (state, action) => {
 
 const FetchSearch = (searchQuery = "man", type = "") => {
   const [search, setSearch] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [state, dispatch] = useReducer(movieReducer, {
     movies: [],
@@ -22,25 +23,30 @@ const FetchSearch = (searchQuery = "man", type = "") => {
 
   useEffect(() => {
     async function getAPI() {
-      try {
-        const response = await fetch(
-          `https://www.omdbapi.com/?s=${searchQuery}&type=${type}&apikey=aae043f2`
-        );
-        const moviesData = await response.json();
-        if (moviesData.Search) {
-          setSearch(moviesData.Search);
-          dispatch({ type: "SET_MOVIES", payload: moviesData.Search });
-        } else {
-          dispatch({ type: "SET_ERROR", payload: "Not Found" });
+      setIsLoading(true);
+      setTimeout(async () => {
+        try {
+          const response = await fetch(
+            `https://www.omdbapi.com/?s=${searchQuery}&type=${type}&apikey=aae043f2`
+          );
+          const moviesData = await response.json();
+          if (moviesData.Search) {
+            setSearch(moviesData.Search);
+            dispatch({ type: "SET_MOVIES", payload: moviesData.Search });
+          } else {
+            dispatch({ type: "SET_ERROR", payload: "Not Found" });
+          }
+        } catch (error) {
+          dispatch({ type: "SET_ERROR", payload: error.message });
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        dispatch({ type: "SET_ERROR", payload: error.message });
-      }
+      }, 1000);
     }
     getAPI();
   }, [searchQuery, type]);
 
-  return { movies: search || movies, error };
+  return { movies: search || movies, error, isLoading };
 };
 
 export default FetchSearch;

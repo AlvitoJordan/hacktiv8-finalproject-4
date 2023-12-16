@@ -2,20 +2,20 @@ import React from "react";
 import { DarkLogo, WebLogo } from "../../assets";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IconButton } from "../atoms";
-import { ChangeTheme, DropdownHooks, SearchingHooks } from "../../hooks";
+import { ChangeTheme } from "../../hooks";
 import Search from "../../requirement/Search";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../hooks/searchContext";
 
 const NavBar = () => {
   const { theme, themeToggle } = ChangeTheme();
-  const { setSearchValue } = SearchingHooks("");
-  const { setSelected } = DropdownHooks();
+  const { setSearchValue, setSelected } = useSearch();
   const navigate = useNavigate();
 
   const handleSearch = (searchValue, selected) => {
     setSearchValue(searchValue);
     setSelected(selected);
-    navigate("/", { state: { searchValue, selected } });
+    navigate("/");
   };
 
   return (

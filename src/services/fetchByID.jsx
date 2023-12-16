@@ -14,7 +14,7 @@ const FetchByID = (id) => {
         const data = await response.json();
         setMovieData(data);
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
     };
     fetchMovie();
   }, [id]);

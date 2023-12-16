@@ -1,40 +1,32 @@
 import Layout from "../components/templates/Layout";
 import { MainHome } from "../components/organisms";
 import { FetchSearch } from "../services";
-import { useLocation } from "react-router-dom";
-import { DropdownHooks, SearchingHooks } from "../hooks";
-import { useEffect } from "react";
+import { useSearch } from "../hooks/searchContext";
+import { LoadingState } from "../components/atoms";
 
 const Homepage = () => {
-  const { searchValue, setSearchValue } = SearchingHooks("");
-  const { selected, setSelected } = DropdownHooks();
+  const { searchValue, selected } = useSearch();
 
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state) {
-      const { searchValue: stateSearchValue, selected: stateSelected } =
-        location.state;
-      setSearchValue(stateSearchValue);
-      setSelected(stateSelected);
-      window.history.replaceState(null, "");
-    }
-  }, [location.state, setSearchValue, setSelected]);
-
-  let movies, error;
+  let movies, error, isLoading;
 
   if (selected === "All" && searchValue === "") {
-    ({ movies, error } = FetchSearch());
+    ({ movies, error, isLoading } = FetchSearch());
+    console.log("Kondisi 1");
   } else {
-    ({ movies, error } = FetchSearch(
+    ({ movies, error, isLoading } = FetchSearch(
       searchValue || undefined,
       selected === "All" ? undefined : selected
     ));
+    console.log("Kondisi 2");
   }
 
   return (
     <Layout>
-      <MainHome error={error} movies={movies} />
+      {isLoading ? (
+        <LoadingState />
+      ) : (
+        <MainHome error={error} movies={movies} />
+      )}
     </Layout>
   );
 };
