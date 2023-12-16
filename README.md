@@ -10,7 +10,7 @@ Anggota :
 - Rezal Nur Syaifudin (RCTN-KS09-018)
 - Syaeful Annas (RCTN-KS09-019)
 
-## DEMO
+## Demo
 
 Using Vercel : https://hacktiv8-finalproject-4.vercel.app/
 
@@ -38,7 +38,7 @@ Movie API from http://www.omdbapi.com/
 
 ## File/Folder
 
-- Assests => Berisi gambar dengan format svg
+- Assets => Berisi gambar dengan format svg
 - Component => Berisi component yang digunakan
 - Hooks => Berisi state
 - Pages => Berisi page (Halaman yang akan ditampilkan)
