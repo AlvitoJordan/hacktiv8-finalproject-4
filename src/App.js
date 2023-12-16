@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Detailpage from "./pages/Detailpage";
 import { NavBar } from "./components/organisms";
@@ -8,6 +8,7 @@ import { Gap } from "./components/atoms";
 import Movie from "./requirement/Movie";
 import Search from "./requirement/Search";
 import { FetchAPI } from "./services";
+import SearchPage from "./pages/SearchPage";
 function App() {
   const { movies, error } = FetchAPI();
   const handleSearch = (searchValue) => {
