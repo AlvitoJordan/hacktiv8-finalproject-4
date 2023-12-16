@@ -2,10 +2,21 @@ import React from "react";
 import { DarkLogo, WebLogo } from "../../assets";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IconButton } from "../atoms";
-import { ChangeTheme } from "../../hooks";
+import { ChangeTheme, DropdownHooks, SearchingHooks } from "../../hooks";
+import Search from "../../requirement/Search";
+import { useNavigate } from "react-router-dom";
 
-const NavBar = ({ children }) => {
+const NavBar = () => {
   const { theme, themeToggle } = ChangeTheme();
+  const { setSearchValue } = SearchingHooks("");
+  const { setSelected } = DropdownHooks();
+  const navigate = useNavigate();
+
+  const handleSearch = (searchValue, selected) => {
+    setSearchValue(searchValue);
+    setSelected(selected);
+    navigate("/", { state: { searchValue, selected } });
+  };
 
   return (
     <div className=" bg-white dark:bg-transparent flex flex-row w-full justify-between items-center py-3 px-5 shadow-lg dark:shadow-none">
@@ -21,7 +32,7 @@ const NavBar = ({ children }) => {
             </a>
           )}
         </div>
-        {children}
+        <Search onSearch={handleSearch} />
       </div>
       {theme === "dark" ? (
         <IconButton type="light" onClick={themeToggle}>

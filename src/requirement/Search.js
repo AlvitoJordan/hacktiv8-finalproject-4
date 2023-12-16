@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Button,
   SearchInput,
@@ -10,6 +10,7 @@ import { DropdownHooks, SearchingHooks } from "../hooks";
 import { FetchSearch } from "../services";
 
 const Search = ({ onSearch }) => {
+  const [showlist, setShowList] = useState(false);
   const { searchValue, handleInputChange } = SearchingHooks("");
   const { selected, handleClick } = DropdownHooks();
   const movieData = FetchSearch(searchValue);
@@ -22,6 +23,27 @@ const Search = ({ onSearch }) => {
   const handleDropdownItemClick = (selectedOption) => {
     handleClick(selectedOption.name);
   };
+
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (searchValue) {
+      setShowList(true);
+    } else {
+      setShowList(false);
+    }
+    const handleClickOutside = (event) => {
+      if (listRef.current && !listRef.current.contains(event.target)) {
+        setShowList(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchValue]);
 
   return (
     <>
@@ -38,7 +60,11 @@ const Search = ({ onSearch }) => {
           <Button type="submit" text="Search" />
         </div>
       </form>
-      {searchValue && <ButtonList movie={movieData.movies} />}
+      {showlist && (
+        <div ref={listRef}>
+          <ButtonList movie={movieData.movies} />
+        </div>
+      )}
     </>
   );
 };
