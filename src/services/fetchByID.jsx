@@ -9,7 +9,7 @@ const FetchByID = (id) => {
       setIsLoading(true);
       setTimeout(async () => {
         const response = await fetch(
-          `http://www.omdbapi.com/?i=${id}&apikey=aae043f2&plot=full`
+          `https://www.omdbapi.com/?i=${id}&apikey=aae043f2&plot=full`
         );
         const data = await response.json();
         setMovieData(data);

@@ -24,7 +24,7 @@ const FetchSearch = (searchQuery = "man", type = "") => {
     async function getAPI() {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?s=${searchQuery}&type=${type}&apikey=aae043f2`
+          `https://www.omdbapi.com/?s=${searchQuery}&type=${type}&apikey=aae043f2`
         );
         const moviesData = await response.json();
         if (moviesData.Search) {
