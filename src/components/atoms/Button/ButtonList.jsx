@@ -8,7 +8,7 @@ const ButtonList = ({ movie }) => {
   const { handleClick } = SearchingHooks();
 
   return (
-    <div className="absolute lg:left-64 top-14 z-10 mt-2 rounded-lg bg-white dark:bg-darkRed shadow-lg focus:outline-none overflow-hidden">
+    <div className="absolute left-5 lg:left-64 top-14 z-10 mt-2 rounded-lg bg-white dark:bg-darkRed shadow-lg focus:outline-none overflow-hidden">
       <div>
         {movie
           ? movie.slice(0, 5).map((movies) => (
